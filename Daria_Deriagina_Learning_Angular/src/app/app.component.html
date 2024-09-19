@@ -1,10 +1,11 @@
 <h1>Welcome to my Investment Calculator</h1>
 
-<div class="container">
-  <div *ngFor="let investment of investments">
-    <h2>{{ investment.name }}</h2>
-    <p>Initial Amount: {{ investment.initialAmount | currency }}</p>
-    <p>Interest Rate:{{ investment.interestRate }}%</p>
-    <p>Duration: {{ investment.duration }} years</p>
-  </div>
-</div>
+<!--<div class="container">-->
+<!--  <div *ngFor="let investment of investments">-->
+<!--    <h2>{{ investment.name }}</h2>-->
+<!--    <p>Initial Amount: {{ investment.initialAmount | currency }}</p>-->
+<!--    <p>Interest Rate:{{ investment.interestRate }}%</p>-->
+<!--    <p>Duration: {{ investment.duration }} years</p>-->
+<!--  </div>-->
+<!--</div>-->
+<app-investment-list></app-investment-list>

@@ -1,0 +1,16 @@
+<!--<p>investment-list works!</p>-->
+<div>
+  <table>
+    <tbody>
+    <tr *ngFor="let investment of investments">
+      <td>{{investment.name}}</td>
+      <td>{{investment.initialAmount}}</td>
+      <td>{{investment.interestRate}}</td>
+      <td>{{investment.duration}}</td>
+      <td>{{investment.compoundFrequency}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
