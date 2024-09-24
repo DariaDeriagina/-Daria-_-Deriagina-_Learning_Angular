@@ -1,7 +1,15 @@
 <!--s-->
-<div class="investment-item">
+<!--<div class="investment-item">-->
+<!--  <h3>{{ investment.name }}</h3>-->
+<!--  <p>Initial Amount: {{ investment.initialAmount }}</p>-->
+<!--  <p>Interest Rate: {{ investment.interestRate }}%</p>-->
+<!--  <p>Duration: {{ investment.duration }} years</p>-->
+<!--  <p>Compound Frequency: {{ investment.compoundFrequency }}</p>-->
+<!--</div>-->
+
+<div class="investment-item" [ngClass]="{'even-item': isEven, 'odd-item': !isEven}">
   <h3>{{ investment.name }}</h3>
-  <p>Initial Amount: {{ investment.initialAmount }}</p>
+  <p>Initial Amount: {{ investment.initialAmount | currency }}</p>
   <p>Interest Rate: {{ investment.interestRate }}%</p>
   <p>Duration: {{ investment.duration }} years</p>
   <p>Compound Frequency: {{ investment.compoundFrequency }}</p>

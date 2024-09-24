@@ -1,0 +1,20 @@
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Investment Name</th>
+      <th>Initial Amount</th>
+      <th>Interest Rate</th>
+      <th>Duration (Years)</th>
+      <th>Compound Frequency</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let investment of investments; let i = index">
+      <td colspan="5">
+        <app-investment-list-item [investment]="investment" [isEven]="i % 2 === 0"></app-investment-list-item>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
