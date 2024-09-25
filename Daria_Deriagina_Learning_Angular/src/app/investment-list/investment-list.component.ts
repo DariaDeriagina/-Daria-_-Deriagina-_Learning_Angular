@@ -2,43 +2,56 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InvestmentListItemComponent } from '../investment-list-item/investment-list-item.component';  // Import child component
 
+interface Investment {
+  name: string;
+  initialAmount: number;
+  interestRate: number;
+  duration: number;
+  compoundFrequency: string;
+  image: string;
+}
 @Component({
   selector: 'app-investment-list',
   standalone: true,
   templateUrl: './investment-list.component.html',
   styleUrls: ['./investment-list.component.scss'],
-  imports: [CommonModule, InvestmentListItemComponent]  // Add child component and CommonModule to imports array
+  imports: [CommonModule, InvestmentListItemComponent]
 })
+
 export class InvestmentListComponent {
   // Define the array with 4 content items
-  investments = [
+  investments: Investment[] = [
     {
-      name: 'Investment A',
+      name: 'Retirement Fund',
       initialAmount: 10000,
       interestRate: 5,
       duration: 10,
-      compoundFrequency: 'Annually'
+      compoundFrequency: 'Annually',
+      image: 'src/app/assets/images/college.jpeg'
     },
     {
-      name: 'Investment B',
+      name: 'Home Renovation Fund',
       initialAmount: 5000,
       interestRate: 4,
       duration: 5,
-      compoundFrequency: 'Monthly'
+      compoundFrequency: 'Monthly',
+      image: 'assets/images/home renovation.jpeg'
     },
     {
-      name: 'Investment C',
+      name: 'Emergency Fund',
       initialAmount: 15000,
       interestRate: 3,
       duration: 3,
-      compoundFrequency: 'Quarterly'
+      compoundFrequency: 'Quarterly',
+      image: 'assets/images/emergency.jpeg'
     },
     {
-      name: 'Investment D',
+      name: 'College Savings Plan',
       initialAmount: 20000,
       interestRate: 6,
       duration: 7,
-      compoundFrequency: 'Bi-Annually'
+      compoundFrequency: 'Bi-Annually',
+      image: 'assets/images/college.jpeg'
     }
   ];
 }

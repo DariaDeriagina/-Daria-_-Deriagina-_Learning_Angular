@@ -5,3 +5,17 @@
 .odd-item {
   background-color: lightgreen;
 }
+
+.investment-image {
+  width: 100px;
+  height: auto;
+  margin-right: 15px;
+  float: left;
+}
+
+.investment-item {
+  overflow: hidden;
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
