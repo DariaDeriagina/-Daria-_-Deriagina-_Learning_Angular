@@ -1,0 +1,58 @@
+Index: Daria_Deriagina_Learning_Angular/src/app/services/investment.service.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class InvestmentService {\n\n  constructor() { }\n}\n
+===================================================================
+diff --git a/Daria_Deriagina_Learning_Angular/src/app/services/investment.service.ts b/Daria_Deriagina_Learning_Angular/src/app/services/investment.service.ts
+--- a/Daria_Deriagina_Learning_Angular/src/app/services/investment.service.ts	(revision 720350e4ac7c873182cb7b40a20556418cfd1983)
++++ b/Daria_Deriagina_Learning_Angular/src/app/services/investment.service.ts	(date 1727395667973)
+@@ -1,9 +1,23 @@
+ import { Injectable } from '@angular/core';
++import {Investment} from "../models/investment";
++import {investmentsList} from "../data/mock-investment";
++import {Observable, of} from "rxjs";
+ 
+ @Injectable({
+   providedIn: 'root'
+ })
++
++// In this new service, add a method that will return an Observable of the IContent array
++// from the mock-content file in your data folder.
+ export class InvestmentService {
++  private investments:Investment[] = investmentsList;
+ 
+   constructor() { }
++
++  // getting info from observables
++
++  getInvestments(): Observable <Investment[]>{
++    return of (investmentsList);
++  }
++
+ }
+Index: Daria_Deriagina_Learning_Angular/src/app/investment-list/investment-list.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Component } from '@angular/core';\nimport {CommonModule, NgOptimizedImage} from '@angular/common';\nimport { InvestmentListItemComponent } from '../investment-list-item/investment-list-item.component';  // Import child component\n\n\n@Component({\n  selector: 'app-investment-list',\n  standalone: true,\n  templateUrl: './investment-list.component.html',\n  styleUrls: ['./investment-list.component.scss'],\n  imports: [CommonModule, InvestmentListItemComponent, NgOptimizedImage]\n})\n\nexport class InvestmentListComponent {\n  // Define the array with 4 content items\n\n}\n\n
+===================================================================
+diff --git a/Daria_Deriagina_Learning_Angular/src/app/investment-list/investment-list.component.ts b/Daria_Deriagina_Learning_Angular/src/app/investment-list/investment-list.component.ts
+--- a/Daria_Deriagina_Learning_Angular/src/app/investment-list/investment-list.component.ts	(revision 720350e4ac7c873182cb7b40a20556418cfd1983)
++++ b/Daria_Deriagina_Learning_Angular/src/app/investment-list/investment-list.component.ts	(date 1727396828660)
+@@ -1,6 +1,7 @@
+ import { Component } from '@angular/core';
+ import {CommonModule, NgOptimizedImage} from '@angular/common';
+-import { InvestmentListItemComponent } from '../investment-list-item/investment-list-item.component';  // Import child component
++import { InvestmentListItemComponent } from '../investment-list-item/investment-list-item.component';
++import {InvestmentService} from "../services/investment.service";  // Import child component
+ 
+ 
+ @Component({
+@@ -14,5 +15,8 @@
+ export class InvestmentListComponent {
+   // Define the array with 4 content items
+ 
++//add this new service using dependency injection (assignment 4 step 7)
++  constructor(private investmentService:InvestmentService ) {
++  }
+ }
+ 
