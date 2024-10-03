@@ -10,5 +10,5 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 })
 export class InvestmentListItemComponent {
   @Input() investment: any;
-  //@Input() isEven?: boolean;
+  @Input() isEven?: boolean;
 }
