@@ -8,4 +8,12 @@
 <!--    <p>Duration: {{ investment.duration }} years</p>-->
 <!--  </div>-->
 <!--</div>-->
+<!--<app-investment-list></app-investment-list>-->
+
+<!-- Step 12: Use the service to bind the retrieved investment to InvestmentListItemComponent -->
+<app-investment-list-item *ngIf="selectedInvestment" [investment]="selectedInvestment"></app-investment-list-item>
+
+<!-- Display the full list of investments -->
 <app-investment-list></app-investment-list>
+
+
