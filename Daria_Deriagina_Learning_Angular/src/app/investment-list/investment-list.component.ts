@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { InvestmentListItemComponent } from '../investment-list-item/investment-list-item.component';  // Import child component
-import { InvestmentService } from '../services/investment.service'; // Step 7: Import the InvestmentService
+import { InvestmentService } from '../services/investment.service';
+import {Investment} from "../models/investment"; // Step 7: Import the InvestmentService
 
 @Component({
   selector: 'app-investment-list',
@@ -11,10 +12,21 @@ import { InvestmentService } from '../services/investment.service'; // Step 7: I
   imports: [CommonModule, InvestmentListItemComponent, NgOptimizedImage]
 })
 
-export class InvestmentListComponent {
+export class InvestmentListComponent implements OnInit{
+  investments: Investment[] = []; // Declare the investments property as an array of Investment
+
   // Step 7: Inject the InvestmentService using dependency injection
   constructor(private investmentService: InvestmentService) {
     // The constructor is primarily used for dependency injection
+  }
+
+  // Step 8: Use ngOnInit to retrieve the investment data from the service
+  ngOnInit(): void {
+    this.investmentService.getInvestments().subscribe({
+      next: (data: Investment[]) => this.investments = data, // Assign the fetched data to the investments array
+      error: (err) => console.error('Error fetching investments', err), // Handle errors
+      complete: () => console.log('Investment data fetch complete!') // Log completion
+    });
   }
 }
 

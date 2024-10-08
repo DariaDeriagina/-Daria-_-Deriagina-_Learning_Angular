@@ -1,11 +1,10 @@
-<h1>Welcome to my Investment Calculator</h1>
+<!-- Future Nav Bar -->
+<div class="nav-bar">
+<nav>
+  <a routerLink="/investment" routerLinkActive="active">Investment List</a>
+  <a routerLink="/modify-investment" routerLinkActive="active">Modify Investment</a>
 
-<!--<div class="container">-->
-<!--  <div *ngFor="let investment of investments">-->
-<!--    <h2>{{ investment.name }}</h2>-->
-<!--    <p>Initial Amount: {{ investment.initialAmount | currency }}</p>-->
-<!--    <p>Interest Rate:{{ investment.interestRate }}%</p>-->
-<!--    <p>Duration: {{ investment.duration }} years</p>-->
-<!--  </div>-->
-<!--</div>-->
-<app-investment-list></app-investment-list>
+</nav>
+</div>
+
+<router-outlet></router-outlet>

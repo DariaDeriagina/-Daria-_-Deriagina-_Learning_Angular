@@ -6,7 +6,7 @@ export const investmentsList: Investment[] = [
     initialAmount: 10000,
     interestRate: 5,
     duration: 10,
-    image: 'src/app/assets/images/college.jpeg',
+    image: '/assets/images/college.jpeg',
     compoundFrequency: 'Annually'
   },
   {
@@ -14,7 +14,7 @@ export const investmentsList: Investment[] = [
     initialAmount: 5000,
     interestRate: 4,
     duration: 5,
-    image: '../assets/images/homeRenovation.jpeg',
+    image: '/assets/images/homeRenovation.jpeg',
     compoundFrequency: 'Monthly'
   },
   {
@@ -22,7 +22,7 @@ export const investmentsList: Investment[] = [
     initialAmount: 15000,
     interestRate: 3,
     duration: 3,
-    image:'../assets/images/emergency.jpeg',
+    image:'/assets/images/emergency.jpeg',
     compoundFrequency: 'Quarterly'
   },
   {
@@ -30,7 +30,7 @@ export const investmentsList: Investment[] = [
     initialAmount: 20000,
     interestRate: 6,
     duration: 7,
-    image: 'src/app/assets/images/college.jpeg',
+    image: '/assets/images/college.jpeg',
     compoundFrequency: 'Bi-Annually'
 
   }
