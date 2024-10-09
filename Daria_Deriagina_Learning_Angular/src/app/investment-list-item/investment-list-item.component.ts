@@ -1,10 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Investment} from "../models/investment";
-import {InvestmentService} from "../services/investment.service";
-
-
+import { Component, OnInit } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router'; // Ensure Router is imported
+import { Investment } from '../models/investment';
+import { InvestmentService } from '../services/investment.service';
 
 @Component({
   selector: 'app-investment-list-item',
@@ -19,50 +17,45 @@ export class InvestmentListItemComponent implements OnInit {
   investmentList: Investment[] = [];
   currentIndex: number = 0;
 
-
   constructor(
     private route: ActivatedRoute,
     private investmentService: InvestmentService,
-    // private router: Router
+    private router: Router  // Ensure Router is injected
   ) {}
 
-// /rewrite onInit to get the list of students and the current student
-  //rewrite onInit to get the list of students and the current student
   ngOnInit(): void {
-    this.investmentService.getInvestments().subscribe(users => {
-      this.investmentList = users;
+    this.investmentService.getInvestments().subscribe(investments => {
+      this.investmentList = investments;
 
-      // Subscribe to paramMap changes to actually see the page changing
-      //If we dont do this, the URL will change but the view will not
+      // Subscribe to paramMap changes to update the view when the URL changes
       this.route.paramMap.subscribe(params => {
         const id = Number(params.get('id'));
         if (id) {
-          this.currentIndex = this.investmentList.findIndex(user => user.id === id);
+          this.currentIndex = this.investmentList.findIndex(investment => investment.id === id);
           this.investment = this.investmentList[this.currentIndex];
         }
       });
     });
   }
 
-
-  goBackward() {
-
+  // Function to move backward in the array
+  goBackward(): void {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.router.navigate(['/investment', this.investmentList[this.currentIndex].id]);
+    }
   }
 
-  goForward() {
-
+  // Function to move forward in the array
+  goForward(): void {
+    if (this.currentIndex < this.investmentList.length - 1) {
+      this.currentIndex++;
+      this.router.navigate(['/investment', this.investmentList[this.currentIndex].id]);
+    }
   }
 
-  goBack() {
-
+  // Function to go back to the investment list view
+  goBack(): void {
+    this.router.navigate(['/investment']); // This navigates back to the list
   }
-
-
 }
-
-
-
-
-
-
-
