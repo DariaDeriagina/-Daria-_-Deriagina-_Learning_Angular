@@ -2,6 +2,7 @@ import {Investment} from "../models/investment";
 
 export const investmentsList: Investment[] = [
   {
+    id: 1,
     name: 'Retirement Fund',
     initialAmount: 10000,
     interestRate: 5,
@@ -10,6 +11,7 @@ export const investmentsList: Investment[] = [
     compoundFrequency: 'Annually'
   },
   {
+    id: 2,
     name: 'Home Renovation Fund',
     initialAmount: 5000,
     interestRate: 4,
@@ -18,6 +20,7 @@ export const investmentsList: Investment[] = [
     compoundFrequency: 'Monthly'
   },
   {
+    id: 3,
     name: 'Emergency Fund',
     initialAmount: 15000,
     interestRate: 3,
@@ -26,6 +29,7 @@ export const investmentsList: Investment[] = [
     compoundFrequency: 'Quarterly'
   },
   {
+    id: 4,
     name: 'College Savings Plan',
     initialAmount: 20000,
     interestRate: 6,

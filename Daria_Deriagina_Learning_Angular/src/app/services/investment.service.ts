@@ -18,4 +18,27 @@ export class InvestmentService {
   }
 
   // Additional CRUD methods can be added here
+  // Step 9a: Get an Investment item by ID
+  getInvestmentById(investmentId: number): Observable<Investment | undefined> {
+    const investment = this.investments.find(investment => investment.id === investmentId);
+    return of(investment);
+  }
+  // Step 9b: Add a new Investment item to the array
+  addInvestment(newInvestment: Investment): Observable<Investment[]> {
+    this.investments.push(newInvestment);
+    return of(this.investments);
+  }
+  // Step 9c: Update an existing Investment item
+  updateInvestment(updatedInvestment: Investment): Observable<Investment[]> {
+    const index = this.investments.findIndex(investment => investment.id === updatedInvestment.id);
+    if (index !== -1) {
+      this.investments[index] = updatedInvestment;
+    }
+    return of(this.investments);
+  }
+  // Step 9d: Delete an Investment item by ID
+  deleteInvestment(investmentId: number): Observable<Investment[]> {
+    this.investments = this.investments.filter(investment => investment.id !== investmentId);
+    return of(this.investments);
+  }
 }

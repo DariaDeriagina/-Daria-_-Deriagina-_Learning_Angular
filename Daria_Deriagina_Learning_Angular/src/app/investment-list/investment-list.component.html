@@ -1,21 +1,27 @@
-<div>
+<div class="container">
+  <h2>Investment List</h2>
   <table>
-<!--    <thead>-->
-<!--    <tr>-->
-<!--      <th>Investment Name</th>-->
-<!--      <th>Initial Amount</th>-->
-<!--      <th>Interest Rate</th>-->
-<!--      <th>Duration (Years)</th>-->
-<!--      <th>Compound Frequency</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Investment Name</th>
+      <th>Initial Amount</th>
+      <th>Interest Rate</th>
+      <th>Duration (Years)</th>
+      <th>Compound Frequency</th>
+    </tr>
+    </thead>
 
     <tbody>
-    <tr *ngFor="let investment of investments; let i = index " [routerLink]="['/investment, investment.id']">
-      <td colspan="5">
-        <app-investment-list-item [investment]="investment" [ngClass]="{'even-item': i%2 ===0, 'odd-item': i%2===1}">
-        </app-investment-list-item>
-      </td>
+    <tr *ngFor="let investment of investments; let i = index"
+        [routerLink]="['/investment', investment.id]">
+      <td>{{ investment.id }}</td>
+      <td>{{ investment.name }}</td>
+      <td>{{ investment. initialAmount }}</td>
+      <td>{{ investment.interestRate }}</td>
+      <td>{{investment.duration }}</td>
+      <td>{{ investment.compoundFrequency? 'Yes' : 'No' }}</td>
+
     </tr>
     </tbody>
   </table>
