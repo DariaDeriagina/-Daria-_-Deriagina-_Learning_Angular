@@ -11,7 +11,7 @@
 <!--    </thead>-->
 
     <tbody>
-    <tr *ngFor="let investment of investments; let i = index">
+    <tr *ngFor="let investment of investments; let i = index " [routerLink]="['/investment, investment.id']">
       <td colspan="5">
         <app-investment-list-item [investment]="investment" [ngClass]="{'even-item': i%2 ===0, 'odd-item': i%2===1}">
         </app-investment-list-item>

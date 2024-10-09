@@ -6,7 +6,7 @@ export const investmentsList: Investment[] = [
     initialAmount: 10000,
     interestRate: 5,
     duration: 10,
-    image: '/assets/images/college.jpeg',
+    image: '/assets/images/retirement.jpeg',
     compoundFrequency: 'Annually'
   },
   {

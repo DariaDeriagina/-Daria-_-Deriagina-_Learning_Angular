@@ -2,14 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { InvestmentListItemComponent } from '../investment-list-item/investment-list-item.component';  // Import child component
 import { InvestmentService } from '../services/investment.service';
-import {Investment} from "../models/investment"; // Step 7: Import the InvestmentService
+import {Investment} from "../models/investment";
+import {RouterLink} from "@angular/router"; // Step 7: Import the InvestmentService
 
 @Component({
   selector: 'app-investment-list',
   standalone: true,
   templateUrl: './investment-list.component.html',
   styleUrls: ['./investment-list.component.scss'],
-  imports: [CommonModule, InvestmentListItemComponent, NgOptimizedImage]
+  imports: [CommonModule, InvestmentListItemComponent, NgOptimizedImage, RouterLink]
 })
 
 export class InvestmentListComponent implements OnInit{

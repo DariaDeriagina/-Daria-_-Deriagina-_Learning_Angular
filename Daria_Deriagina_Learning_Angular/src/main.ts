@@ -5,10 +5,12 @@ import {provideRouter, Routes} from "@angular/router";
 import {InvestmentListComponent} from "./app/investment-list/investment-list.component";
 import {ModifyListItemComponent} from "./app/modify-list-item/modify-list-item.component";
 import {PageNotFoundComponent} from "./app/page-not-found/page-not-found.component";
+import {InvestmentListItemComponent} from "./app/investment-list-item/investment-list-item.component";
 
 const routes: Routes = [
   {path:'', redirectTo:'/investment', pathMatch: 'full'},//default route
   {path: 'investment', component: InvestmentListComponent},
+  {path: 'investment/:id', component: InvestmentListItemComponent},
   {path: 'modify-investment', component: ModifyListItemComponent },
   {path: '**', component:PageNotFoundComponent} //404 page **-wild card
 ];
