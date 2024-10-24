@@ -12,23 +12,23 @@ export class InvestmentService {
 
   constructor() {}
 
-  // Step 6: Method to return an Observable of the investment array
+   // Update the Service to handle CRUD
   getInvestments(): Observable<Investment[]> {
     return of(this.investments); // Return an observable that emits mock investment data
   }
 
   // Additional CRUD methods can be added here
-  // Step 9a: Get an Investment item by ID
+
   getInvestmentById(investmentId: number): Observable<Investment | undefined> {
     const investment = this.investments.find(investment => investment.id === investmentId);
     return of(investment);
   }
-  // Step 9b: Add a new Investment item to the array
+  // Update the Service to handle CRUD
   addInvestment(newInvestment: Investment): Observable<Investment[]> {
     this.investments.push(newInvestment);
     return of(this.investments);
   }
-  // Step 9c: Update an existing Investment item
+  // Update the Service to handle CRUD
   updateInvestment(updatedInvestment: Investment): Observable<Investment[]> {
     const index = this.investments.findIndex(investment => investment.id === updatedInvestment.id);
     if (index !== -1) {
@@ -36,7 +36,7 @@ export class InvestmentService {
     }
     return of(this.investments);
   }
-  // Step 9d: Delete an Investment item by ID
+  // Update the Service to handle CRUD
   deleteInvestment(investmentId: number): Observable<Investment[]> {
     this.investments = this.investments.filter(investment => investment.id !== investmentId);
     return of(this.investments);
