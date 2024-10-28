@@ -1,11 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Investment} from "../models/investment";
-import {InvestmentService} from "../services/investment.service";
-import {NgIf} from "@angular/common";
-
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Investment } from "../models/investment";
+import { InvestmentService } from "../services/investment.service";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: 'app-modify-list-item',
@@ -15,11 +13,10 @@ import {NgIf} from "@angular/common";
     NgIf,
     ReactiveFormsModule
   ],
-
   templateUrl: './modify-list-item.component.html',
-  styleUrl: './modify-list-item.component.scss'
+  styleUrls: ['./modify-list-item.component.scss'] // Fixed the typo here
 })
-export class ModifyInvestmentComponent {
+export class ModifyListItemComponent implements OnInit {
   investmentForm: FormGroup;
   investment: Investment | undefined;
 
@@ -29,14 +26,15 @@ export class ModifyInvestmentComponent {
     private investmentService: InvestmentService,
     private router: Router
   ) {
+    // Initialize the form with required fields
     this.investmentForm = this.fb.group({
-      id: ['', Validators.required], //ID is required
-      firstName: ['', Validators.required],//First name is required
-      lastName: ['', Validators.required],
-      department: [''],
-      isAdmin: [false]
+      id: ['', Validators.required],  // ID is required
+      investmentName: ['', Validators.required], // Investment name is required
+      initialAmount: [0, Validators.required],   // Initial amount is required
+      interestRate: [0, Validators.required],    // Interest rate is required
+      duration: [0, Validators.required],        // Duration is required
+      compoundFrequency: [false]                 // Checkbox for compound frequency
     });
-
   }
 
   ngOnInit(): void {
@@ -45,15 +43,10 @@ export class ModifyInvestmentComponent {
       this.investmentService.getInvestmentById(+id).subscribe(investment => {
         if (investment) {
           this.investment = investment;
-          this.investmentForm.patchValue(investment);
+          this.investmentForm.patchValue(investment); // Populate the form with the investment data
         }
       });
     }
-  }
-
-
-  updateInvestmentList() {
-
   }
 
   onSubmit(): void {
@@ -65,11 +58,7 @@ export class ModifyInvestmentComponent {
     }
   }
 
-
-
-
-
-  onDelete() {
+  onDelete(): void {
     if (this.investment) {
       this.investmentService.deleteInvestment(this.investment.id).subscribe(() => {
         this.router.navigate(['/investment-list']); // Redirect to list after deletion
@@ -77,12 +66,7 @@ export class ModifyInvestmentComponent {
     }
   }
 
-navigateToInvestmentList():void{
-//     this.route.navigate(['/investments']);
- }
-
-}
-
-
-export class ModifyListItemComponent {
+  navigateToInvestmentList(): void {
+    this.router.navigate(['/investment-list']); // Navigate back to the investment list
+  }
 }

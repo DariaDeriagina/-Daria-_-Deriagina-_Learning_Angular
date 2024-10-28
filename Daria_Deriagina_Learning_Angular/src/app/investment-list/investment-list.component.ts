@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { InvestmentListItemComponent } from '../investment-list-item/investment-list-item.component';  // Import child component
 import { InvestmentService } from '../services/investment.service';
-import {Investment} from "../models/investment";
-import {RouterLink} from "@angular/router";
+import { Investment } from "../models/investment";
+import { Router, RouterLink } from "@angular/router"; // Import Router
 
 @Component({
   selector: 'app-investment-list',
@@ -12,16 +12,14 @@ import {RouterLink} from "@angular/router";
   styleUrls: ['./investment-list.component.scss'],
   imports: [CommonModule, InvestmentListItemComponent, NgOptimizedImage, RouterLink]
 })
-
-export class InvestmentListComponent implements OnInit{
-  displayColumns:string[] = ['id', 'investment name', 'initial amount', 'interest rate', 'duration', 'compound frequency'];
+export class InvestmentListComponent implements OnInit {
+  displayColumns: string[] = ['id', 'investment name', 'initial amount', 'interest rate', 'duration', 'compound frequency'];
   investments: Investment[] = []; // Declare the investments property as an array of Investment
 
-
-  private router: any;
-  constructor(private investmentService: InvestmentService) {
-    // The constructor is primarily used for dependency injection
-  }
+  constructor(
+    private investmentService: InvestmentService,
+    private router: Router // Inject Router here
+  ) {}
 
   ngOnInit(): void {
     this.investmentService.getInvestments().subscribe({
@@ -38,11 +36,7 @@ export class InvestmentListComponent implements OnInit{
     });
   }
 
-
-
   editInvestment(investmentId: number): void {
-    this.router.navigate(['/modify-investment', investmentId]);
+    this.router.navigate(['/modify-investment', investmentId]); // Use router to navigate to edit form
   }
-
 }
-
