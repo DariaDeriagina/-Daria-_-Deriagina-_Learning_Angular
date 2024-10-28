@@ -39,31 +39,42 @@ export class ModifyInvestmentComponent {
 
   }
 
-  // ngOnInit(): void {
-  //   const id = this.route.snapshot.paramMap.get('id');
-  //   if (id) {
-  //     this.investmentService.getInvestmentById(+id).subscribe(investment => {
-  //       if(investment) {
-  //         this.investment = investment;
-  //
-  //         this.investment.patchValue(investment);
-  //       }
-  //     });
-  //   }
-  // }
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.investmentService.getInvestmentById(+id).subscribe(investment => {
+        if (investment) {
+          this.investment = investment;
+          this.investmentForm.patchValue(investment);
+        }
+      });
+    }
+  }
+
 
   updateInvestmentList() {
 
   }
 
-  onSubmit() {
-
+  onSubmit(): void {
+    if (this.investmentForm.valid) {
+      const updatedInvestment = this.investmentForm.value;
+      this.investmentService.updateInvestment(updatedInvestment).subscribe(() => {
+        this.router.navigate(['/investment-list']); // Redirect to list after update
+      });
+    }
   }
 
 
 
-  onDelete() {
 
+
+  onDelete() {
+    if (this.investment) {
+      this.investmentService.deleteInvestment(this.investment.id).subscribe(() => {
+        this.router.navigate(['/investment-list']); // Redirect to list after deletion
+      });
+    }
   }
 
 navigateToInvestmentList():void{

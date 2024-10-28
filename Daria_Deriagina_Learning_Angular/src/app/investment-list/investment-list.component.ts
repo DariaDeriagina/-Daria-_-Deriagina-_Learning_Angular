@@ -17,12 +17,12 @@ export class InvestmentListComponent implements OnInit{
   displayColumns:string[] = ['id', 'investment name', 'initial amount', 'interest rate', 'duration', 'compound frequency'];
   investments: Investment[] = []; // Declare the investments property as an array of Investment
 
-  // Step 7: Inject the InvestmentService using dependency injection
+
+  private router: any;
   constructor(private investmentService: InvestmentService) {
     // The constructor is primarily used for dependency injection
   }
 
-  // Step 8: Use ngOnInit to retrieve the investment data from the service
   ngOnInit(): void {
     this.investmentService.getInvestments().subscribe({
       next: (data: Investment[]) => this.investments = data, // Assign the fetched data to the investments array
@@ -31,15 +31,18 @@ export class InvestmentListComponent implements OnInit{
     });
   }
 
-  deleteInvestment(id: number) {
-
+  deleteInvestment(investmentId: number): void {
+    this.investmentService.deleteInvestment(investmentId).subscribe(() => {
+      // refresh after deletion
+      this.investmentService.getInvestments().subscribe(investments => this.investments = investments);
+    });
   }
 
 
-  editInvestment(id: number) {
 
+  editInvestment(investmentId: number): void {
+    this.router.navigate(['/modify-investment', investmentId]);
   }
-
 
 }
 

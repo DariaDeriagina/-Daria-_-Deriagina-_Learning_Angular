@@ -21,9 +21,10 @@
       <td>{{ investment.interestRate }}</td>
       <td>{{investment.duration }}</td>
       <td>{{ investment.compoundFrequency? 'Yes' : 'No' }}</td>
+      <td>
       <button (click)="editInvestment(investment.id)" class="btn btn-primary">Edit</button>
       <button (click)="deleteInvestment(investment.id)" class="btn btn-danger">Delete</button>
-
+      </td>
     </tr>
     </tbody>
   </table>
