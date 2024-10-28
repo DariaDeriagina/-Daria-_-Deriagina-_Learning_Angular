@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ModifyListItemComponent} from "./modify-list-item.component";
 
-import { ModifyListItemComponent } from './modify-list-item.component';
 
 describe('ModifyListItemComponent', () => {
   let component: ModifyListItemComponent;

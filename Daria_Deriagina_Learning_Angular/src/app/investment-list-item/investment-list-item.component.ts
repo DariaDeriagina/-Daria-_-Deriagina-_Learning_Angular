@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import {CommonModule, NgIf, NgOptimizedImage} from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router'; // Ensure Router is imported
 import { Investment } from '../models/investment';
 import { InvestmentService } from '../services/investment.service';
@@ -9,13 +9,14 @@ import { InvestmentService } from '../services/investment.service';
   standalone: true,
   templateUrl: './investment-list-item.component.html',
   styleUrls: ['./investment-list-item.component.scss'],
-  imports: [CommonModule, NgOptimizedImage]
+  imports: [NgIf, NgOptimizedImage]
 })
 
 export class InvestmentListItemComponent implements OnInit {
   investment: Investment | undefined;
   investmentList: Investment[] = [];
   currentIndex: number = 0;
+  error: string|null = null;
 
   constructor(
     private route: ActivatedRoute,

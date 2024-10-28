@@ -6,4 +6,5 @@ export interface Investment {
   duration: number,
   image: string,
   compoundFrequency?: string; //optional, maybe monthly or annualy
+
 }

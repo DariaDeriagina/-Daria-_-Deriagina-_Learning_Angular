@@ -1,1 +1,43 @@
-<p>modify-list-item works!</p>
+<!-- modify-list-item.component.html -->
+<!--This is build using Reactive Form -->
+<form [formGroup]="investmentForm" (ngSubmit)="onSubmit()">
+  <!-- ID Field -->
+  <div class="form-group">
+    <label for="id">ID</label>
+    <input type="number" id="id" formControlName="id" />
+  </div>
+
+  <!--Investment Name Field -->
+  <div class="form-group">
+    <label for="investmentName">InvestmentName</label>
+    <input type="text" id="investmentName" formControlName="investmentName" />
+  </div>
+
+  <!-- Initial Amount Field -->
+  <div class="form-group">
+    <label for="initialAmount">Last Name</label>
+    <input type="text" id="initialAmount" formControlName="initialAmount" />
+  </div>
+
+  <!-- Interest Rate Field-->
+  <div class="form-group">
+    <label for="interestRate">Department</label>
+    <input type="text" id="interestRate" formControlName="interestRate" />
+  </div>
+
+  <!-- Is Admin Checkbox -->
+  <div class="form-group">
+    <label for="isAdmin">Is Admin</label>
+    <input type="checkbox" id="isAdmin" formControlName="isAdmin" />
+  </div>
+
+  <!-- Submit Button (Add or Update) -->
+  <button type="submit">Submit</button>
+
+  <!-- Delete Button -->
+  <button type="button" (click)="onDelete()" >Delete</button>
+
+  <!-- Update Button -->
+  <button type="button" (click)="updateInvestmentList()">Back to List</button>
+</form>
+

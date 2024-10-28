@@ -3,7 +3,7 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { InvestmentListItemComponent } from '../investment-list-item/investment-list-item.component';  // Import child component
 import { InvestmentService } from '../services/investment.service';
 import {Investment} from "../models/investment";
-import {RouterLink} from "@angular/router"; // Step 7: Import the InvestmentService
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-investment-list',
@@ -14,6 +14,7 @@ import {RouterLink} from "@angular/router"; // Step 7: Import the InvestmentServ
 })
 
 export class InvestmentListComponent implements OnInit{
+  displayColumns:string[] = ['id', 'investment name', 'initial amount', 'interest rate', 'duration', 'compound frequency'];
   investments: Investment[] = []; // Declare the investments property as an array of Investment
 
   // Step 7: Inject the InvestmentService using dependency injection
@@ -29,5 +30,16 @@ export class InvestmentListComponent implements OnInit{
       complete: () => console.log('Investment data fetch complete!') // Log completion
     });
   }
+
+  deleteInvestment(id: number) {
+
+  }
+
+
+  editInvestment(id: number) {
+
+  }
+
+
 }
 

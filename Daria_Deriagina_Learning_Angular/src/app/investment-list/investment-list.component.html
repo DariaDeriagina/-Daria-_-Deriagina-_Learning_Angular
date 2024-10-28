@@ -13,7 +13,7 @@
     </thead>
 
     <tbody>
-    <tr *ngFor="let investment of investments; let i = index"
+    <tr *ngFor="let investment of investments;"
         [routerLink]="['/investment', investment.id]">
       <td>{{ investment.id }}</td>
       <td>{{ investment.name }}</td>
@@ -21,8 +21,12 @@
       <td>{{ investment.interestRate }}</td>
       <td>{{investment.duration }}</td>
       <td>{{ investment.compoundFrequency? 'Yes' : 'No' }}</td>
+      <button (click)="editInvestment(investment.id)" class="btn btn-primary">Edit</button>
+      <button (click)="deleteInvestment(investment.id)" class="btn btn-danger">Delete</button>
 
     </tr>
     </tbody>
   </table>
 </div>
+
+

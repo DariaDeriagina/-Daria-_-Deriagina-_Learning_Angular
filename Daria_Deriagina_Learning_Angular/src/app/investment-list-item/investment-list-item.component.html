@@ -7,7 +7,7 @@
 <!--  <p>Compound Frequency: {{ investment.compoundFrequency }}</p>-->
 <!--</div>-->
 
-<div class="investment-item" >
+<div *ngIf="investment" class="investment-item" >
   <h3>Investments Details</h3>
   <p>ID: {{ investment?.id }}</p>
   <p>Investment Name:{{ investment?.name }}</p>
@@ -20,3 +20,4 @@
   <button (click)="goForward()" [disabled]="currentIndex === investmentList.length - 1">Next</button>
   <button (click)="goBack()">Back to Student List</button>
 </div>
+
