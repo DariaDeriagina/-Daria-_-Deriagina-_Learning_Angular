@@ -23,12 +23,13 @@ export class InvestmentService {
     const investment = this.investments.find(investment => investment.id === investmentId);
     return of(investment);
   }
-  // Update the Service to handle CRUD
+  // Method to add a new investment
   addInvestment(newInvestment: Investment): Observable<Investment[]> {
-    this.investments.push(newInvestment);
+    this.investments.push(newInvestment); // Assuming investments is the array of Investment items
     return of(this.investments);
   }
-  // Update the Service to handle CRUD
+
+// Method to update an existing investment
   updateInvestment(updatedInvestment: Investment): Observable<Investment[]> {
     const index = this.investments.findIndex(investment => investment.id === updatedInvestment.id);
     if (index !== -1) {
