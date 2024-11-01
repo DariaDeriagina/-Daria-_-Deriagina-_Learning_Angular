@@ -29,12 +29,13 @@ export class InvestmentService {
     return of(this.investments);
   }
   // Step 9c: Update an existing Investment item
-  updateInvestment(updatedInvestment: Investment): Observable<Investment[]> {
+  updateInvestment(updatedInvestment: Investment): Observable<Investment | undefined> {
     const index = this.investments.findIndex(investment => investment.id === updatedInvestment.id);
-    if (index !== -1) {
+    if (index > -1) {
       this.investments[index] = updatedInvestment;
+      return of(updatedInvestment);
     }
-    return of(this.investments);
+    return of(undefined);
   }
   // Step 9d: Delete an Investment item by ID
   deleteInvestment(investmentId: number): Observable<Investment[]> {
