@@ -26,11 +26,11 @@ export class ModifyListItemComponent implements OnInit {
   ) {
     // Initialize the form with fields and validators
     this.investmentForm = this.fb.group({
-      id: ['', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
-      investmentName: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9 ]+$")]],
-      initialAmount: [0, [Validators.required, Validators.min(1)]],
-      interestRate: [0, [Validators.required, Validators.min(0), Validators.max(100)]],
-      duration: [0, [Validators.required, Validators.min(1)]],
+      id: [''],
+      investmentName: [''],
+      initialAmount: [0],
+      interestRate: [0],
+      duration: [0],
       compoundFrequency: [false]
     });
   }
@@ -63,7 +63,10 @@ export class ModifyListItemComponent implements OnInit {
 
   // Handle form submission
   onSubmit(): void {
-    if (!this.isUniqueIdAndName(this.investmentForm.value.id, this.investmentForm.value.investmentName)) {
+    const formValues = this.investmentForm.value;
+
+    // Check for unique ID and name
+    if (!this.isUniqueIdAndName(formValues.id, formValues.name)) {
       alert("ID and Investment Name must be unique.");
       return;
     }
@@ -72,20 +75,21 @@ export class ModifyListItemComponent implements OnInit {
       const updatedInvestment = this.investmentForm.value;
 
       if (this.investment) {
-        // Edit existing investment
+        // Editing an existing investment
         this.investmentService.updateInvestment(updatedInvestment).subscribe(() => {
-          this.router.navigate(['/investment']);
+          this.router.navigate(['/investments']); // Redirect back to list after update
         });
       } else {
-        // Add new investment
+        // Adding a new investment
         this.investmentService.addInvestment(updatedInvestment).subscribe(() => {
-          this.router.navigate(['/investment']);
+          this.router.navigate(['/investments']); // Redirect back to list after addition
         });
       }
     } else {
       console.log("Form is invalid");
     }
   }
+
 
   // Delete investment
   onDelete(): void {
@@ -98,6 +102,6 @@ export class ModifyListItemComponent implements OnInit {
 
   // Navigate back to the list
   navigateToInvestmentList(): void {
-    this.router.navigate(['/investment']);
+    this.router.navigate(['/investments']);
   }
 }

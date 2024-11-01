@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Investment } from "../models/investment";
 import { InvestmentListItemComponent } from "../investment-list-item/investment-list-item.component";

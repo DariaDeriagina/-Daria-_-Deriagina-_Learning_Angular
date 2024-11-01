@@ -1,3 +1,4 @@
+
 import { Component, Input } from '@angular/core';
 import { Investment } from "../models/investment";
 
@@ -10,4 +11,12 @@ import { Investment } from "../models/investment";
 })
 export class InvestmentListItemComponent {
   @Input() investment!: Investment;
+
+  onEdit() {
+
+  }
+
+  onDelete() {
+
+  }
 }
