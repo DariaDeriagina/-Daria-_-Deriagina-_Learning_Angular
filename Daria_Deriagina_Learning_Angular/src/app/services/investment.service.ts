@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Investment } from '../models/investment';
 import { investmentsList } from '../data/mock-investment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvestmentService {
   private investments = investmentsList;
+
+  constructor(private router: Router) {}
 
   // Get all investments
   getInvestments(): Observable<Investment[]> {
@@ -35,6 +38,12 @@ export class InvestmentService {
     return of();
   }
 
+  // Navigate to edit investment
+  editInvestment(id: number): void {
+    this.router.navigate(['/modify-investment', id]);
+  }
+
+  // Delete investment
   deleteInvestment(id: number): Observable<void> {
     const index = this.investments.findIndex(investment => investment.id === id);
     if (index !== -1) {
