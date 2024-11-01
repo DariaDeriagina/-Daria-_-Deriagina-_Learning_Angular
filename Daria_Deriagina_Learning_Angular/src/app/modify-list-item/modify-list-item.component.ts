@@ -57,7 +57,7 @@ export class ModifyListItemComponent implements OnInit {
   onSubmit(): void {
     const updatedInvestment = this.investmentForm.value;
 
-    if (this.investment) {
+    if (updatedInvestment.id) {
       // Editing an existing investment
       this.investmentService.updateInvestment(updatedInvestment).subscribe(() => {
         this.router.navigate(['/investments']); // Redirect back to list after update

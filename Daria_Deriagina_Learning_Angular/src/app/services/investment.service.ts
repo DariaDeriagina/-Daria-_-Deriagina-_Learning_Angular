@@ -51,4 +51,8 @@ export class InvestmentService {
     }
     return of();
   }
+
+  // generateNewId(): number{
+  //   return this.investments.length >0
+  // }
 }

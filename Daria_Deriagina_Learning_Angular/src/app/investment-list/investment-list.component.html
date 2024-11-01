@@ -2,8 +2,8 @@
   <div class="investment-item" *ngFor="let investment of investments">
     <app-investment-list-item
       [investment]="investment"
-      [editInvestment]="editInvestment"
-      [deleteInvestment]="deleteInvestment">
+      [editInvestment]="editInvestment.bind(this)"
+      [deleteInvestment]="deleteInvestment.bind(this)">
     </app-investment-list-item>
   </div>
 </div>
