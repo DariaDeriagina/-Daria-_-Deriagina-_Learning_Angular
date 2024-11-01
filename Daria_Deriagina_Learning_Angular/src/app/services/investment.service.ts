@@ -24,9 +24,13 @@ export class InvestmentService {
   }
 
   // Add a new investment
+
+
   addInvestment(newInvestment: Investment): Observable<void> {
+    newInvestment.id = this.generateNewId();
     this.investments.push(newInvestment);
     return of();
+
   }
 
   // Update an existing investment
@@ -52,7 +56,7 @@ export class InvestmentService {
     return of();
   }
 
-  // generateNewId(): number{
-  //   return this.investments.length >0
-  // }
+  generateNewId(): number{
+    return this.investments.length >0 ? Math.max(...this.investments.map(investment => investment.id)) +1 : 1;
+  }
 }

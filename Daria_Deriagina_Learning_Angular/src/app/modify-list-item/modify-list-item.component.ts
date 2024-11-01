@@ -59,15 +59,12 @@ export class ModifyListItemComponent implements OnInit {
 
     if (updatedInvestment.id) {
       // Editing an existing investment
-      this.investmentService.updateInvestment(updatedInvestment).subscribe(() => {
-        this.router.navigate(['/investments']); // Redirect back to list after update
-      });
+      this.investmentService.updateInvestment(updatedInvestment);
     } else {
       // Adding a new investment
-      this.investmentService.addInvestment(updatedInvestment).subscribe(() => {
-        this.router.navigate(['/investments']); // Redirect back to list after addition
-      });
+      this.investmentService.addInvestment(updatedInvestment);
     }
+    this.router.navigate(['/investments']);
   }
 
   // Delete investment
