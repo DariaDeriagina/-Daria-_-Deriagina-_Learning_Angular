@@ -1,4 +1,3 @@
-
 <div class="investment-item">
   <img [src]="investment.imageUrl" alt="{{ investment.name }}" />
   <div class="investment-id">ID: {{ investment.id }}</div>
@@ -10,8 +9,8 @@
     <p>Compound Frequency: {{ investment.compoundFrequency ? 'Yes' : 'No' }}</p>
     <!-- Edit and Delete Buttons -->
     <div class="button-group">
-    <button (click)="onEdit()">Edit</button>
-    <button (click)="onDelete()">Delete</button>
+      <button (click)="onEdit()">Edit</button>
+      <button (click)="onDelete()">Delete</button>
     </div>
   </div>
 </div>

@@ -35,9 +35,11 @@ export class InvestmentService {
     return of();
   }
 
-  // Delete investment by ID
   deleteInvestment(id: number): Observable<void> {
-    this.investments = this.investments.filter(investment => investment.id !== id);
+    const index = this.investments.findIndex(investment => investment.id === id);
+    if (index !== -1) {
+      this.investments.splice(index, 1);
+    }
     return of();
   }
 }

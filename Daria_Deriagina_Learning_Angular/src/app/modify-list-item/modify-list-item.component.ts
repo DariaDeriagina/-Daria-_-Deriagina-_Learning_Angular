@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Investment } from "../models/investment";
 import { InvestmentService } from "../services/investment.service";
@@ -24,7 +24,7 @@ export class ModifyListItemComponent implements OnInit {
     private investmentService: InvestmentService,
     private router: Router
   ) {
-    // Initialize the form with fields and validators
+    // Initialize the form without any validators
     this.investmentForm = this.fb.group({
       id: [''],
       investmentName: [''],
@@ -36,12 +36,12 @@ export class ModifyListItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Fetch all investments for potential unique validation
+    // Fetch all investments
     this.investmentService.getInvestments().subscribe(investments => {
       this.investments = investments;
     });
 
-    // Load specific investment if ID is in route
+    // Load specific investment if ID is in the route
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.investmentService.getInvestmentById(+id).subscribe(investment => {
@@ -53,49 +53,28 @@ export class ModifyListItemComponent implements OnInit {
     }
   }
 
-  // Check if ID and Name are unique
-  isUniqueIdAndName(id: number, name: string): boolean {
-    return !this.investments.some(investment =>
-      (investment.id === id && (!this.investment || investment.id !== this.investment.id)) ||
-      (investment.name === name && (!this.investment || investment.name !== this.investment.name))
-    );
-  }
-
   // Handle form submission
   onSubmit(): void {
-    const formValues = this.investmentForm.value;
+    const updatedInvestment = this.investmentForm.value;
 
-    // Check for unique ID and name
-    if (!this.isUniqueIdAndName(formValues.id, formValues.name)) {
-      alert("ID and Investment Name must be unique.");
-      return;
-    }
-
-    if (this.investmentForm.valid) {
-      const updatedInvestment = this.investmentForm.value;
-
-      if (this.investment) {
-        // Editing an existing investment
-        this.investmentService.updateInvestment(updatedInvestment).subscribe(() => {
-          this.router.navigate(['/investments']); // Redirect back to list after update
-        });
-      } else {
-        // Adding a new investment
-        this.investmentService.addInvestment(updatedInvestment).subscribe(() => {
-          this.router.navigate(['/investments']); // Redirect back to list after addition
-        });
-      }
+    if (this.investment) {
+      // Editing an existing investment
+      this.investmentService.updateInvestment(updatedInvestment).subscribe(() => {
+        this.router.navigate(['/investments']); // Redirect back to list after update
+      });
     } else {
-      console.log("Form is invalid");
+      // Adding a new investment
+      this.investmentService.addInvestment(updatedInvestment).subscribe(() => {
+        this.router.navigate(['/investments']); // Redirect back to list after addition
+      });
     }
   }
-
 
   // Delete investment
   onDelete(): void {
     if (this.investment) {
       this.investmentService.deleteInvestment(this.investment.id).subscribe(() => {
-        this.router.navigate(['/investment']);
+        this.router.navigate(['/investments']);
       });
     }
   }
