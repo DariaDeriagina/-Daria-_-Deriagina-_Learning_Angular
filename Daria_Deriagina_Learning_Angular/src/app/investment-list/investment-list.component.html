@@ -1,28 +1,5 @@
-<div class="container">
-  <h2>Investment List</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Investment Name</th>
-      <th>Initial Amount</th>
-      <th>Interest Rate</th>
-      <th>Duration (Years)</th>
-      <th>Compound Frequency</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr *ngFor="let investment of investments; let i = index"
-        [routerLink]="['/investment', investment.id]">
-      <td>{{ investment.id }}</td>
-      <td>{{ investment.name }}</td>
-      <td>{{ investment. initialAmount }}</td>
-      <td>{{ investment.interestRate }}</td>
-      <td>{{investment.duration }}</td>
-      <td>{{ investment.compoundFrequency? 'Yes' : 'No' }}</td>
-
-    </tr>
-    </tbody>
-  </table>
+<div class="investment-list">
+  <div class="investment-item" *ngFor="let investment of investments">
+    <app-investment-list-item [investment]="investment"></app-investment-list-item>
+  </div>
 </div>

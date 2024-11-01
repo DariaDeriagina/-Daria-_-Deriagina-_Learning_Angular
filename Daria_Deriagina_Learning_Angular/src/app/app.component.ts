@@ -1,17 +1,32 @@
-import { Component } from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { Investment } from './models/investment';
-import {InvestmentListComponent} from "./investment-list/investment-list.component";
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { Investment } from "./models/investment";
+import { AsyncPipe, NgForOf, NgIf } from "@angular/common";
+import { InvestmentListComponent } from "./investment-list/investment-list.component";
+import { InvestmentService } from "./services/investment.service";
+import { InvestmentListItemComponent } from "./investment-list-item/investment-list-item.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, InvestmentListComponent, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, NgIf, NgForOf, InvestmentListComponent, InvestmentListItemComponent, AsyncPipe, RouterLink],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.css']
 })
+export class AppComponent implements OnInit {
+  title: string = 'Investment Calculator';
+  sampleInvestment?: Investment;
 
-export class AppComponent {
-  title = 'Investment Calculator';
+  constructor(private investmentService: InvestmentService) {}
+
+  ngOnInit(): void {
+    this.getSampleInvestment();
+  }
+
+  getSampleInvestment(): void {
+    const id = 1;
+    this.investmentService.getInvestmentById(id).subscribe((investment) => {
+      this.sampleInvestment = investment;
+    });
+  }
 }

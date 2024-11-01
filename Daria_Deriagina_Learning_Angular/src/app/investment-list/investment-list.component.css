@@ -3,5 +3,5 @@ div:nth-child(odd) {
 }
 
 div:nth-child(even) {
-  background-color: rgba(0, 0, 255, 0.4);
+  background-color:greenyellow;
 }

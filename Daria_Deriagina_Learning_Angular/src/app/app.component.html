@@ -1,10 +1,16 @@
-<!-- Future Nav Bar -->
-<div class="nav-bar">
+<html>
+<body>
 <nav>
-  <a routerLink="/investment" routerLinkActive="active">Investment List</a>
-  <a routerLink="/modify-investment" routerLinkActive="active">Modify Investment</a>
-
+  <ul>
+    <li><a routerLink="/investments">Home</a></li>
+    <li><a routerLink="/modify-investment">Modify Investment</a></li>
+  </ul>
 </nav>
+
+<div>
+  <h1>{{ title }}</h1>
+
+  <router-outlet></router-outlet>
 </div>
-<h1>{{ title }}</h1>
-<router-outlet></router-outlet>
+</body>
+</html>

@@ -1,23 +1,56 @@
-/* Style for the navigation bar */
-.nav-bar {
-  background-color: #f8f9fa; /* Light grey background */
-  padding: 10px 20px; /* Padding around the navbar */
-  border-bottom: 1px solid #dee2e6; /* Border for separation */
+/* Investment Calculator Styling */
+
+html {
+  font-size: 62.5%;
 }
 
-.nav-bar nav {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  padding: 2em;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+h1 {
+  color: blue;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+nav {
+  background-color: #f5f5f5;
+  padding: 1rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
   display: flex;
-  justify-content: center; /* Center the links */
+  justify-content: center;
+  gap: 2rem;
 }
 
-.nav-bar a {
-  text-decoration: none; /* Remove underline from links */
-  color: #007bff; /* Blue color for links */
-  font-size: 18px; /* Font size for links */
-  margin: 0 15px; /* Space between links */
+li {
+  border: 0.1em solid #ddd;
+  border-radius: 0.5em;
+  padding: 1.5em;
+  box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.nav-bar a.active {
-  font-weight: bold; /* Bold text for active link */
-  color: #0056b3; /* Darker blue for active link */
+a {
+  text-decoration: none;
+  color: blue;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
 }

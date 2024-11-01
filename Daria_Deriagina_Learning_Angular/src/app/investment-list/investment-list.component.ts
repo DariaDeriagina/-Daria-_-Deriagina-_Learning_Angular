@@ -1,33 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
-import { InvestmentListItemComponent } from '../investment-list-item/investment-list-item.component';  // Import child component
-import { InvestmentService } from '../services/investment.service';
-import {Investment} from "../models/investment";
-import {RouterLink} from "@angular/router"; // Step 7: Import the InvestmentService
+import { Component, OnInit } from '@angular/core';
+import { Investment } from "../models/investment";
+import { InvestmentListItemComponent } from "../investment-list-item/investment-list-item.component";
+import { NgForOf } from "@angular/common";
+import { InvestmentService } from "../services/investment.service";
+
 
 @Component({
   selector: 'app-investment-list',
   standalone: true,
+  imports: [
+    InvestmentListItemComponent,
+    NgForOf,
+  ],
   templateUrl: './investment-list.component.html',
-  styleUrls: ['./investment-list.component.scss'],
-  imports: [CommonModule, InvestmentListItemComponent, NgOptimizedImage, RouterLink]
+  styleUrls: ['./investment-list.component.css']
 })
+export class InvestmentListComponent implements OnInit {
+  investments: Investment[] = [];
 
-export class InvestmentListComponent implements OnInit{
-  investments: Investment[] = []; // Declare the investments property as an array of Investment
+  constructor(private investmentService: InvestmentService) {}
 
-  // Step 7: Inject the InvestmentService using dependency injection
-  constructor(private investmentService: InvestmentService) {
-    // The constructor is primarily used for dependency injection
+  ngOnInit(): void {
+    this.getInvestments();
   }
 
-  // Step 8: Use ngOnInit to retrieve the investment data from the service
-  ngOnInit(): void {
-    this.investmentService.getInvestments().subscribe({
-      next: (data: Investment[]) => this.investments = data, // Assign the fetched data to the investments array
-      error: (err) => console.error('Error fetching investments', err), // Handle errors
-      complete: () => console.log('Investment data fetch complete!') // Log completion
+  getInvestments(): void {
+    this.investmentService.getInvestments().subscribe((investments) => {
+      this.investments = investments;
     });
   }
 }
-

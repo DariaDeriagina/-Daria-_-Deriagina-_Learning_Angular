@@ -1,5 +1,6 @@
 import {Investment} from "../models/investment";
 
+
 export const investmentsList: Investment[] = [
   {
     id: 1,
@@ -7,7 +8,7 @@ export const investmentsList: Investment[] = [
     initialAmount: 10000,
     interestRate: 5,
     duration: 10,
-    image: '/assets/images/retirement.jpeg',
+    imageUrl:  "/assets/images/retirement.jpeg",
     compoundFrequency: 'Annually'
   },
   {
@@ -16,7 +17,7 @@ export const investmentsList: Investment[] = [
     initialAmount: 5000,
     interestRate: 4,
     duration: 5,
-    image: '/assets/images/homeRenovation.jpeg',
+    imageUrl: "/assets/images/homeRenovation.jpeg",
     compoundFrequency: 'Monthly'
   },
   {
@@ -25,7 +26,7 @@ export const investmentsList: Investment[] = [
     initialAmount: 15000,
     interestRate: 3,
     duration: 3,
-    image:'/assets/images/emergency.jpeg',
+    imageUrl:"/assets/images/emergency.jpeg",
     compoundFrequency: 'Quarterly'
   },
   {
@@ -34,7 +35,7 @@ export const investmentsList: Investment[] = [
     initialAmount: 20000,
     interestRate: 6,
     duration: 7,
-    image: '/assets/images/college.jpeg',
+    imageUrl: "/assets/images/college.jpeg",
     compoundFrequency: 'Bi-Annually'
 
   }
