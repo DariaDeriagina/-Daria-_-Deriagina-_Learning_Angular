@@ -1,45 +1,43 @@
 import { Injectable } from '@angular/core';
-import {Investment} from "../models/investment";
-import {investmentsList} from "../data/mock-investment";
 import { Observable, of } from 'rxjs';
- // Update the path as needed
+import { Investment } from '../models/investment';
+import { investmentsList } from '../data/mock-investment'; // Assuming you have a mock-data file
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvestmentService {
-  private investments: Investment[] = investmentsList; // Local copy of investment data for CRUD operations
+  private investments = investmentsList;
 
-  constructor() {}
-
-  // Step 6: Method to return an Observable of the investment array
+  // Get all investments
   getInvestments(): Observable<Investment[]> {
-    return of(this.investments); // Return an observable that emits mock investment data
+    return of(this.investments);
   }
 
-  // Additional CRUD methods can be added here
-  // Step 9a: Get an Investment item by ID
-  getInvestmentById(investmentId: number): Observable<Investment | undefined> {
-    const investment = this.investments.find(investment => investment.id === investmentId);
+  // Get investment by ID
+  getInvestmentById(id: number): Observable<Investment | undefined> {
+    const investment = this.investments.find(investment => investment.id === id);
     return of(investment);
   }
-  // Step 9b: Add a new Investment item to the array
-  addInvestment(newInvestment: Investment): Observable<Investment[]> {
+
+  // Add a new investment
+  addInvestment(newInvestment: Investment): Observable<void> {
     this.investments.push(newInvestment);
-    return of(this.investments);
+    return of();
   }
-  // Step 9c: Update an existing Investment item
-  updateInvestment(updatedInvestment: Investment): Observable<Investment | undefined> {
+
+  // Update an existing investment
+  updateInvestment(updatedInvestment: Investment): Observable<void> {
     const index = this.investments.findIndex(investment => investment.id === updatedInvestment.id);
-    if (index > -1) {
+    if (index !== -1) {
       this.investments[index] = updatedInvestment;
-      return of(updatedInvestment);
     }
-    return of(undefined);
+    return of();
   }
-  // Step 9d: Delete an Investment item by ID
-  deleteInvestment(investmentId: number): Observable<Investment[]> {
-    this.investments = this.investments.filter(investment => investment.id !== investmentId);
-    return of(this.investments);
+
+  // Delete investment by ID
+  deleteInvestment(id: number): Observable<void> {
+    this.investments = this.investments.filter(investment => investment.id !== id);
+    return of();
   }
 }
