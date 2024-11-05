@@ -7,7 +7,7 @@ import { ModifyListItemComponent } from "./app/modify-list-item/modify-list-item
 import {InvestmentListItemComponent} from "./app/investment-list-item/investment-list-item.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/w', pathMatch: 'full'},
+  {path: '', redirectTo: '/investments', pathMatch: 'full'},
   { path: 'investments', component: InvestmentListComponent },
   { path: 'investments/:id', component: InvestmentListItemComponent },
   {path: 'modify-investment', component: ModifyListItemComponent},
