@@ -1,16 +1,16 @@
 <div class="investment-item">
-  <img [src]="investment.imageUrl" alt="{{ investment.name }}" />
-  <div class="investment-id">ID: {{ investment.id }}</div>
+  <img [src]="investmentInput.imageUrl" alt="{{ investmentInput.name }}" />
+  <div class="investment-id">ID: {{ investmentInput.id }}</div>
   <div class="investment-details">
-    <h5>{{ investment.name }}</h5>
-    <p>Initial Amount: ${{ investment.initialAmount }}</p>
-    <p>Interest Rate: {{ investment.interestRate }}%</p>
-    <p>Duration: {{ investment.duration }} years</p>
-    <p>Compound Frequency: {{ investment.compoundFrequency ? 'Yes' : 'No' }}</p>
-    <!-- Edit and Delete Buttons -->
-    <div class="button-group">
-      <button (click)="onEdit()">Edit</button>
-      <button (click)="onDelete()">Delete</button>
-    </div>
+    <p>Name:{{ investmentInput.name }}</p>
+    <p>Initial Amount: ${{ investmentInput.initialAmount }}</p>
+    <p>Interest Rate: {{ investmentInput.interestRate }}%</p>
+    <p>Duration: {{ investmentInput.duration }} years</p>
+    <p>Compound Frequency: {{ investmentInput.compoundFrequency ? 'Yes' : 'No' }}</p>
+<!--    &lt;!&ndash; Edit and Delete Buttons &ndash;&gt;-->
+<!--    <div class="button-group">-->
+<!--      <button (click)="onEdit()">Edit</button>-->
+<!--      <button (click)="onDelete()">Delete</button>-->
+<!--    </div>-->
   </div>
 </div>

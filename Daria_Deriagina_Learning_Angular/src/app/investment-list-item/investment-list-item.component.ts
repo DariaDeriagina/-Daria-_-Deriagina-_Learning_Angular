@@ -10,15 +10,15 @@ import { Investment } from "../models/investment";
   styleUrls: ['./investment-list-item.component.css']
 })
 export class InvestmentListItemComponent {
-  @Input() investment!: Investment;
+  @Input() investmentInput!: Investment;
   @Input() editInvestment!: (id: number) => void; // Accept edit function from parent
   @Input() deleteInvestment!: (id: number) => void;
 
-  onEdit() {
-    this.editInvestment(this.investment.id);
-  }
-
-  onDelete() {
-    this.deleteInvestment(this.investment.id);
-  }
+  // onEdit() {
+  //   this.editInvestment(this.investment.id);
+  // }
+  //
+  // onDelete() {
+  //   this.deleteInvestment(this.investment.id);
+  // }
 }

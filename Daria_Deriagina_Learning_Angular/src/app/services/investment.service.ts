@@ -44,7 +44,7 @@ export class InvestmentService {
   }
 
   // Update an existing investment
-  updateInvestment(updatedInvestment: Investment): Observable<Investment | undefined> {
+  updateInvestment(updatedInvestment: Investment): Observable<Investment> {
     const url = `${this.apiUrl}/${updatedInvestment.id}`;
     return this.http.post<Investment>(url, updatedInvestment).pipe(catchError(this.handleError));
 

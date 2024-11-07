@@ -35,11 +35,11 @@
 
 /* Edit button style */
 .button-group button:first-child {
-  background-color: #4CAF50;
+  /*background-color: #4CAF50;*/
 }
 
 .button-group button:first-child:hover {
-  background-color: #45a049;
+  /*background-color: #45a049;*/
 }
 
 /* Delete button style */

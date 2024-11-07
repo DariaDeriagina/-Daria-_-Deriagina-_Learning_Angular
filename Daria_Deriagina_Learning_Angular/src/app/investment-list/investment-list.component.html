@@ -1,9 +1,14 @@
 <div class="investment-list">
   <div class="investment-item" *ngFor="let investment of investments">
     <app-investment-list-item
-      [investment]="investment"
-      [editInvestment]="editInvestment.bind(this)"
-      [deleteInvestment]="deleteInvestment.bind(this)">
+      [investmentInput]="investment">
+<!--      [editInvestment]="editInvestment.bind(this)"-->
+<!--      [deleteInvestment]="deleteInvestment.bind(this)">-->
     </app-investment-list-item>
+    <div class="button-group">
+    <button (click)="onEdit(investment.id)">Edit</button>
+    <button (click)="onDelete(investment.id)">Delete</button>
   </div>
 </div>
+
+<div *ngIf="error" class="error">{{error}} </div>

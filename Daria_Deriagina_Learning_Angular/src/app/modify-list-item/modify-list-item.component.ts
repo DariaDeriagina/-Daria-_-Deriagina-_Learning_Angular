@@ -17,6 +17,7 @@ export class ModifyListItemComponent implements OnInit {
   investmentForm: FormGroup;
   investment: Investment | undefined;
   investments: Investment[] = [];
+  error :string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +28,7 @@ export class ModifyListItemComponent implements OnInit {
     // Initialize the form without any validators
     this.investmentForm = this.fb.group({
       id: [''],
-      investmentName: [''],
+      name: [''],
       initialAmount: [0],
       interestRate: [0],
       duration: [0],
@@ -37,17 +38,19 @@ export class ModifyListItemComponent implements OnInit {
 
   ngOnInit(): void {
     // Fetch all investments
-    this.investmentService.getInvestments().subscribe(investments => {
-      this.investments = investments;
-    });
-
     // Load specific investment if ID is in the route
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
-      this.investmentService.getInvestmentById(+id).subscribe(investment => {
-        if (investment) {
-          this.investment = investment;
-          this.investmentForm.patchValue(investment);  // Populate form with existing data
+      this.investmentService.getInvestmentById(id).subscribe({
+        next: investment => {
+          //console.log(investment.name);
+          if (investment) {
+            this.investmentForm.patchValue(investment);
+          }
+        },
+        error: err => {
+          this.error ='Error fetching investment';
+          console.error('Error fetching investment', err)
         }
       });
     }
@@ -55,26 +58,27 @@ export class ModifyListItemComponent implements OnInit {
 
   // Handle form submission
   onSubmit(): void {
-    const updatedInvestment = this.investmentForm.value;
-
-    if (updatedInvestment.id) {
-      // Editing an existing investment
-      this.investmentService.updateInvestment(updatedInvestment);
-    } else {
-      // Adding a new investment
-      this.investmentService.addInvestment(updatedInvestment);
-    }
-    this.router.navigate(['/investments']);
+   if (this.investmentForm.valid){
+     const investment: Investment = this.investmentForm.value;
+     console.log(investment.name)
+     if (investment.id){
+       this.investmentService.updateInvestment(investment).subscribe(()=>this.router.navigate(['/investments']));
+     } else {
+       investment.id = this.investmentService.generateNewId();
+       console.log(investment.id);
+       this.investmentService.addInvestment(investment).subscribe(()=>this.router.navigate(['/investments']));
+     }
+   }
   }
 
   // Delete investment
-  onDelete(): void {
-    if (this.investment) {
-      this.investmentService.deleteInvestment(this.investment.id).subscribe(() => {
-        this.router.navigate(['/investments']);
-      });
-    }
-  }
+  // onDelete(): void {
+  //   if (this.investment) {
+  //     this.investmentService.deleteInvestment(this.investment.id).subscribe(() => {
+  //       this.router.navigate(['/investments']);
+  //     });
+  //   }
+  // }
 
   // Navigate back to the list
   navigateToInvestmentList(): void {
