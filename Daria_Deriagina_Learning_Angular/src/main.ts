@@ -10,11 +10,13 @@ import {importProvidersFrom} from "@angular/core";
 import {delay} from "rxjs";
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import {InMemoryDataService} from "./app/services/in-memory-data.service";
+import {PreloadAllModules} from "@angular/router";
 
 const routes: Routes = [
   {path: '', redirectTo: '/w', pathMatch: 'full'},
   { path: 'investments', component: InvestmentListComponent },
-  { path: 'investments/:id', component: InvestmentListItemComponent },
+  // { path: 'investments/:id', component: InvestmentListItemComponent },
+  { path: 'investments/:id', loadChildren: () => import('./app/investment-list-item/investment-list-item.component').then(m => m.InvestmentListItemComponent) },
   {path: 'modify-investment', component: ModifyListItemComponent},
   { path: 'modify-investment/:id', component: ModifyListItemComponent },
   { path: '**', component: PageNotFoundComponent }
