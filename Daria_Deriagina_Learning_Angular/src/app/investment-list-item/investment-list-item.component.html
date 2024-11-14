@@ -3,7 +3,7 @@
   <div class="investment-id">ID: {{ investmentInput.id }}</div>
   <div class="investment-details">
     <p>Name:{{ investmentInput.name }}</p>
-    <p>Initial Amount: ${{ investmentInput.initialAmount }}</p>
+    <p>Initial Amount: {{ investmentInput.initialAmount | currency: 'CAN' }}</p>
     <p>Interest Rate: {{ investmentInput.interestRate }}%</p>
     <p>Duration: {{ investmentInput.duration }} years</p>
     <p>Compound Frequency: {{ investmentInput.compoundFrequency ? 'Yes' : 'No' }}</p>

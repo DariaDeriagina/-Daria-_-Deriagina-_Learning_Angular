@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Investment } from "./models/investment";
-import { AsyncPipe, NgForOf, NgIf } from "@angular/common";
+import {AsyncPipe, DatePipe, NgForOf, NgIf, UpperCasePipe} from "@angular/common";
 import { InvestmentListComponent } from "./investment-list/investment-list.component";
 import { InvestmentService } from "./services/investment.service";
 import { InvestmentListItemComponent } from "./investment-list-item/investment-list-item.component";
@@ -9,11 +9,12 @@ import { InvestmentListItemComponent } from "./investment-list-item/investment-l
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgForOf, InvestmentListComponent, InvestmentListItemComponent, AsyncPipe, RouterLink],
+  imports: [RouterOutlet, NgIf, NgForOf, InvestmentListComponent, InvestmentListItemComponent, AsyncPipe, RouterLink, UpperCasePipe,DatePipe],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  myDate = Date.now();
   title: string = 'Investment Calculator';
   sampleInvestment?: Investment;
 
@@ -29,4 +30,6 @@ export class AppComponent implements OnInit {
       this.sampleInvestment = investment;
     });
   }
+
+
 }

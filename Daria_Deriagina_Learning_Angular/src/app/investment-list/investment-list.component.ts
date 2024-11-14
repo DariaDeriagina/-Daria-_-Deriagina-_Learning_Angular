@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Investment } from "../models/investment";
 import { InvestmentService } from "../services/investment.service";
 import {Router, RouterModule} from '@angular/router';
-import {NgForOf, NgIf} from "@angular/common";
+import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {InvestmentListItemComponent} from "../investment-list-item/investment-list-item.component";
 
 @Component({
@@ -15,7 +15,7 @@ import {InvestmentListItemComponent} from "../investment-list-item/investment-li
     NgForOf,
     InvestmentListItemComponent,
     NgIf,
-    // Import NgForOf to loop through investments in template
+CurrencyPipe
   ]
 })
 
