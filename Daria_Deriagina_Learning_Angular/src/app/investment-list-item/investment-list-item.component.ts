@@ -2,6 +2,7 @@
 import { Component, Input } from '@angular/core';
 import { Investment } from "../models/investment";
 import {CurrencyPipe} from "@angular/common";
+import {InvestmentDetailsPipe} from "../pipes/investment-details.pipe";
 
 
 @Component({
@@ -9,7 +10,7 @@ import {CurrencyPipe} from "@angular/common";
   standalone: true,
   templateUrl: './investment-list-item.component.html',
   imports: [
-    CurrencyPipe
+    CurrencyPipe, InvestmentDetailsPipe
   ],
   styleUrls: ['./investment-list-item.component.css']
 })
