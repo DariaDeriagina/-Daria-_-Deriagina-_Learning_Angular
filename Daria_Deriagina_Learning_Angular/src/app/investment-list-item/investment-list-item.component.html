@@ -4,7 +4,10 @@
   <div class="investment-details">
     <p>Investment: {{ { name: investmentInput.name, duration: investmentInput.duration } | investmentDetails }}</p>
     <p>Initial Amount: {{ investmentInput.initialAmount | currency: 'CAN' }}</p>
-    <p>Interest Rate: {{ investmentInput.interestRate }}%</p>
+    <p [style.color]="investmentInput.interestRate | interestRateColor">
+      Interest Rate: {{ investmentInput.interestRate }}%
+    </p>
+
     <p>Compound Frequency: {{ investmentInput.compoundFrequency ? 'Yes' : 'No' }}</p>
 <!--    &lt;!&ndash; Edit and Delete Buttons &ndash;&gt;-->
 <!--    <div class="button-group">-->
