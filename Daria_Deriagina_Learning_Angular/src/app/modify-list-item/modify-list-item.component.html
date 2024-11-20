@@ -2,44 +2,43 @@
   <!-- ID Field -->
   <div class="form-group">
     <label for="id">ID</label>
-    <input type="number" id="id" formControlName="id" />
+    <input type="number" id="id" formControlName="id" appHighlightOnFocus="orange" />
   </div>
 
   <!-- Investment Name Field -->
   <div class="form-group">
     <label for="investmentName">Investment Name</label>
-    <input type="text" id="investmentName" formControlName="name" />
+    <input type="text" id="investmentName" formControlName="name" appHighlightOnFocus="lightblue" />
   </div>
 
   <!-- Initial Amount Field -->
   <div class="form-group">
     <label for="initialAmount">Initial Amount</label>
-    <input type="number" id="initialAmount" formControlName="initialAmount" />
+    <input type="number" id="initialAmount" formControlName="initialAmount" appHighlightOnFocus="yellow" />
   </div>
 
   <!-- Interest Rate Field -->
   <div class="form-group">
     <label for="interestRate">Interest Rate (%)</label>
-    <input type="number" id="interestRate" formControlName="interestRate" />
+    <input type="number" id="interestRate" formControlName="interestRate" appHighlightOnFocus="pink" />
   </div>
 
   <!-- Duration (Years) Field -->
   <div class="form-group">
     <label for="duration">Duration (Years)</label>
-    <input type="number" id="duration" formControlName="duration" />
+    <input type="number" id="duration" formControlName="duration" appHighlightOnFocus="lightgreen" />
   </div>
 
   <!-- Compound Frequency Field -->
   <div class="form-group">
     <label for="compoundFrequency">Compound Frequency</label>
-    <input type="checkbox" id="compoundFrequency" formControlName="compoundFrequency" />
+    <input type="checkbox" id="compoundFrequency" formControlName="compoundFrequency" appHighlightOnFocus="purple" />
     <span>Yes</span>
   </div>
 
   <!-- Form Buttons -->
   <div class="button-group">
-  <button type="submit">Save</button>
-<!--<button type="button" (click)="onDelete()">Delete</button>-->
-  <button type="button" (click)="navigateToInvestmentList()">Back to List</button>
+    <button type="submit">Save</button>
+    <button type="button" (click)="navigateToInvestmentList()">Back to List</button>
   </div>
 </form>
