@@ -5,6 +5,7 @@ import {CurrencyPipe} from "@angular/common";
 import {InvestmentDetailsPipe} from "../pipes/investment-details.pipe";
 import {InterestRateColorPipe} from "../pipes/interest-rate-color.pipe";
 import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
+import {ShowDetailsOnHoverDirective} from "../directives/show-details-on-hover.directive";
 
 
 @Component({
@@ -12,7 +13,7 @@ import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
   standalone: true,
   templateUrl: './investment-list-item.component.html',
   imports: [
-    CurrencyPipe, InvestmentDetailsPipe, InterestRateColorPipe, HoverHighlightDirective
+    CurrencyPipe, InvestmentDetailsPipe, InterestRateColorPipe, HoverHighlightDirective, ShowDetailsOnHoverDirective
   ],
   styleUrls: ['./investment-list-item.component.css']
 })

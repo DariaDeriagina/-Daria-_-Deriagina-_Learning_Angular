@@ -1,5 +1,7 @@
-<div class="investment-item" [appHoverHighlight]="'lightblue'">
-  <img [src]="investmentInput.imageUrl" alt="{{ investmentInput.name }}" />
+<div class="investment-item"
+     [appHoverHighlight]="'lightblue'"
+     [appShowDetailsOnHover]="'ID: ' + investmentInput.id">
+  <img [src]="investmentInput?.imageUrl" alt="{{ investmentInput?.name }}" />
   <div class="investment-id">ID: {{ investmentInput.id }}</div>
   <div class="investment-details">
     <p>Investment: {{ { name: investmentInput.name, duration: investmentInput.duration } | investmentDetails }}</p>

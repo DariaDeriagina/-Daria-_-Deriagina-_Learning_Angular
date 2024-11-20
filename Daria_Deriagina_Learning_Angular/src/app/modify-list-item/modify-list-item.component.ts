@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Investment } from "../models/investment";
 import { InvestmentService } from "../services/investment.service";
 import {HighlightOnFocusDirective} from "../directives/highlight-on-focus.directive";
+import {ShowDetailsOnHoverDirective} from "../directives/show-details-on-hover.directive";
+import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
 
 @Component({
   selector: 'app-modify-list-item',
@@ -11,6 +13,8 @@ import {HighlightOnFocusDirective} from "../directives/highlight-on-focus.direct
   imports: [
     ReactiveFormsModule,
     HighlightOnFocusDirective,
+    ShowDetailsOnHoverDirective,
+    HoverHighlightDirective
   ],
   templateUrl: './modify-list-item.component.html',
   styleUrls: ['./modify-list-item.component.scss']

@@ -5,6 +5,7 @@ import {Router, RouterModule} from '@angular/router';
 import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {InvestmentListItemComponent} from "../investment-list-item/investment-list-item.component";
 import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
+import {ShowDetailsOnHoverDirective} from "../directives/show-details-on-hover.directive";
 
 @Component({
   selector: 'app-investment-list',
@@ -16,7 +17,7 @@ import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
     NgForOf,
     InvestmentListItemComponent,
     NgIf,
-CurrencyPipe, HoverHighlightDirective
+    CurrencyPipe, HoverHighlightDirective, ShowDetailsOnHoverDirective
   ]
 })
 
