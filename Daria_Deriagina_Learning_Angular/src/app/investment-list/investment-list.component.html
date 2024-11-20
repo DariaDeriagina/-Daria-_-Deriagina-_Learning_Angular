@@ -1,5 +1,5 @@
 <div class="investment-list">
-  <div class="investment-item" *ngFor="let investment of investments">
+  <div class="investment-item" *ngFor="let investment of investments" [appHoverHighlight]="'lightyellow'">
     <app-investment-list-item
       [investmentInput]="investment">
 <!--      [editInvestment]="editInvestment.bind(this)"-->
@@ -10,5 +10,7 @@
     <button (click)="onDelete(investment.id)">Delete</button>
   </div>
 </div>
+</div>
+
 
 <div *ngIf="error" class="error">{{error}} </div>
