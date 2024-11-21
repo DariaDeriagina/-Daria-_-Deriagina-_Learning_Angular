@@ -1,11 +1,7 @@
 <div class="investment-item"
      [appHoverHighlight]="'lightblue'"
      [appShowDetailsOnHover]="'ID: ' + investmentInput.id">
-  <img [ngSrc]="investmentInput?.imageUrl || ''"
-       alt="{{ investmentInput?.name || 'Investment image' }}"
-       width="200"
-       height="150"
-       priority />
+  <img [src]="investmentInput.imageUrl" alt="{{ investmentInput.name }}" />
   <div class="investment-id">ID: {{ investmentInput.id }}</div>
   <div class="investment-details">
     <p>Investment: {{ { name: investmentInput.name, duration: investmentInput.duration } | investmentDetails }}</p>

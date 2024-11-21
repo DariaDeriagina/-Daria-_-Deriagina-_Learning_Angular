@@ -11,6 +11,7 @@ import {delay} from "rxjs";
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import {InMemoryDataService} from "./app/services/in-memory-data.service";
 import {PreloadAllModules} from "@angular/router";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const routes: Routes = [
   {path: '', redirectTo: '/w', pathMatch: 'full'},
@@ -26,5 +27,5 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
     provideRouter(routes),
-  importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {delay:1000}))],
+  importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {delay:1000})), provideAnimationsAsync()],
 }).catch((err)=>console.error(err));
