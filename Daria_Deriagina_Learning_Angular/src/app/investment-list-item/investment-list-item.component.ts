@@ -1,7 +1,7 @@
 
 import { Component, Input } from '@angular/core';
 import { Investment } from "../models/investment";
-import {CurrencyPipe} from "@angular/common";
+import {CurrencyPipe, NgOptimizedImage} from "@angular/common";
 import {InvestmentDetailsPipe} from "../pipes/investment-details.pipe";
 import {InterestRateColorPipe} from "../pipes/interest-rate-color.pipe";
 import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
@@ -13,7 +13,7 @@ import {ShowDetailsOnHoverDirective} from "../directives/show-details-on-hover.d
   standalone: true,
   templateUrl: './investment-list-item.component.html',
   imports: [
-    CurrencyPipe, InvestmentDetailsPipe, InterestRateColorPipe, HoverHighlightDirective, ShowDetailsOnHoverDirective
+    CurrencyPipe, InvestmentDetailsPipe, InterestRateColorPipe, HoverHighlightDirective, ShowDetailsOnHoverDirective, NgOptimizedImage
   ],
   styleUrls: ['./investment-list-item.component.css']
 })

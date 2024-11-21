@@ -1,7 +1,11 @@
 <div class="investment-item"
      [appHoverHighlight]="'lightblue'"
      [appShowDetailsOnHover]="'ID: ' + investmentInput.id">
-  <img [src]="investmentInput?.imageUrl" alt="{{ investmentInput?.name }}" />
+  <img [ngSrc]="investmentInput?.imageUrl || ''"
+       alt="{{ investmentInput?.name || 'Investment image' }}"
+       width="200"
+       height="150"
+       priority />
   <div class="investment-id">ID: {{ investmentInput.id }}</div>
   <div class="investment-details">
     <p>Investment: {{ { name: investmentInput.name, duration: investmentInput.duration } | investmentDetails }}</p>
@@ -11,10 +15,5 @@
     </p>
 
     <p>Compound Frequency: {{ investmentInput.compoundFrequency ? 'Yes' : 'No' }}</p>
-<!--    &lt;!&ndash; Edit and Delete Buttons &ndash;&gt;-->
-<!--    <div class="button-group">-->
-<!--      <button (click)="onEdit()">Edit</button>-->
-<!--      <button (click)="onDelete()">Delete</button>-->
-<!--    </div>-->
   </div>
 </div>
