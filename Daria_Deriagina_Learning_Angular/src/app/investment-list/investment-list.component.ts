@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Investment } from "../models/investment";
-import { InvestmentService } from "../services/investment.service";
-import {Router, RouterModule} from '@angular/router';
-import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
-import {InvestmentListItemComponent} from "../investment-list-item/investment-list-item.component";
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle, MatCardSubtitle} from "@angular/material/card";
+import {MatButton} from "@angular/material/button";
+import {NgForOf, NgIf} from "@angular/common";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {CurrencyPipe} from "@angular/common";
+import {Investment} from "../models/investment";
+import {InvestmentService} from "../services/investment.service";
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
-import {ShowDetailsOnHoverDirective} from "../directives/show-details-on-hover.directive";
+import {InvestmentListItemComponent} from "../investment-list-item/investment-list-item.component";
+import {InvestmentDetailsPipe} from "../pipes/investment-details.pipe";
+import {InterestRateColorPipe} from "../pipes/interest-rate-color.pipe";
+
 
 @Component({
   selector: 'app-investment-list',
@@ -13,59 +20,35 @@ import {ShowDetailsOnHoverDirective} from "../directives/show-details-on-hover.d
   standalone: true,
   styleUrls: ['./investment-list.component.css'],
   imports: [
-    RouterModule, // Import RouterModule for routing functions
-    NgForOf,
-    InvestmentListItemComponent,
-    NgIf,
-    CurrencyPipe, HoverHighlightDirective, ShowDetailsOnHoverDirective
+    MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle, MatButton,
+    NgForOf, NgIf, CurrencyPipe, HoverHighlightDirective, InvestmentListItemComponent, MatCardModule,
+    MatButtonModule, InvestmentDetailsPipe, InterestRateColorPipe
   ]
 })
-
 export class InvestmentListComponent implements OnInit {
   investments: Investment[] = [];
-  error: String |null = null;
-
+  error: string | null = null;
 
   constructor(private investmentService: InvestmentService, private router: Router) {}
 
   ngOnInit(): void {
-    //this life cycle hook is a good place to fetch unit our data
     this.investmentService.getInvestments().subscribe({
-      next:(data:Investment[])=>{
+      next: (data: Investment[]) => {
         this.investments = data;
         this.error = null;
-        },
-      error:err => {
-        this.error = 'Error fetching investments';
-        console.error("Error fetching investments", err)
       },
-      complete:() => console.log ("Investments data fetch complete successfully! ")
-    })
-
-  }
-
-  getInvestments(): void {
-    this.investmentService.getInvestments().subscribe((investments) => {
-      this.investments = investments;
+      error: err => {
+        this.error = 'Error fetching investments';
+        console.error("Error fetching investments", err);
+      }
     });
   }
 
-  editInvestment(id: number): void {
-    this.router.navigate(['/modify-investment', id]);
+  onEdit(id: number): void {
+    this.router.navigate(['modify-investment', id]);
   }
 
-  deleteInvestment(id: number): void {
-    this.investmentService.deleteInvestment(id).subscribe(() => {
-      this.getInvestments(); // Refresh the list after deletion
-    });
-  }
-
-  onDelete(id:number) {
-    this.investments=this.investments.filter(inv=>inv.id !== id);
-  }
-
-  onEdit(id:number) {
-    //console.log("It is working");
-    this.router.navigate(['modify-investment',id]);
+  onDelete(id: number): void {
+    this.investments = this.investments.filter(inv => inv.id !== id);
   }
 }

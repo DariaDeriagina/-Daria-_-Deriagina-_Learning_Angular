@@ -1,13 +1,23 @@
 <div class="investment-list">
-  <div class="investment-item"
-       *ngFor="let investment of investments"
-       [appHoverHighlight]="'lightyellow'">
-    <app-investment-list-item [investmentInput]="investment"></app-investment-list-item>
-    <div class="button-group">
-      <button (click)="onEdit(investment.id)">Edit</button>
-      <button (click)="onDelete(investment.id)">Delete</button>
-    </div>
-  </div>
+  <mat-card *ngFor="let investment of investments" class="investment-item" [appHoverHighlight]="'lightyellow'">
+    <mat-card-header>
+      <mat-card-title>{{ investment.name }}</mat-card-title>
+      <mat-card-subtitle>ID: {{ investment.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="investment-image-container">
+        <img mat-card-image [src]="investment.imageUrl || 'fallback-image.jpg'" alt="{{ investment.name || 'Investment image' }}" />
+      </div>
+      <div class="investment-details">
+        <p>Investment: {{ { name: investment.name, duration: investment.duration } | investmentDetails }}</p>
+        <p>Initial Amount: {{ investment.initialAmount | currency: 'CAN' }}</p>
+        <p [style.color]="investment.interestRate | interestRateColor">Interest Rate: {{ investment.interestRate }}%</p>
+        <p>Compound Frequency: {{ investment.compoundFrequency ? 'Yes' : 'No' }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="button-group">
+      <button mat-raised-button color="primary" (click)="onEdit(investment.id)">Edit</button>
+      <button mat-raised-button color="warn" (click)="onDelete(investment.id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
-
-<div *ngIf="error" class="error">{{ error }}</div>

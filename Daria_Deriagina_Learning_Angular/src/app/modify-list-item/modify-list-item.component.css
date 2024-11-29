@@ -1,73 +1,68 @@
 form {
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  font-size: 1.2rem;
+  padding: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 1.4rem;
 }
 
-.form-group {
-  margin-bottom: 15px;
-
+.mat-form-field {
+  width: 100%; /* Full width for each field */
 }
 
-label {
-  font-size: 1.2rem;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-input[type="number"],
-input[type="text"],
-input[type="checkbox"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type="checkbox"] {
-  width: auto;
-  margin-right: 8px;
+.mat-checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: -10px; /* Adjust for better spacing */
+  margin-bottom: 20px; /* Add consistent spacing below checkbox */
 }
 
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Space between buttons */
-  margin-top: 20px;
+  gap: 15px;
+  margin-top: 30px;
 }
-
 button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 button[type="submit"] {
-  background-color: #4CAF50;
+  background-color: #28a745;
   color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
 }
 
 button[type="button"] {
-  background-color: #f44336;
+  background-color: #6c757d;
   color: white;
 }
 
-button[type="button"]:last-child {
-  background-color: #888;
+button[type="button"]:hover {
+  background-color: #5a6268;
 }
 
-button:hover {
-  opacity: 0.9;
-}
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    gap: 15px;
+  }
 
+  button {
+    width: 100%;
+  }
+}
