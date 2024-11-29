@@ -21,6 +21,7 @@ form {
   align-items: center;
   margin-top: -10px; /* Adjust for better spacing */
   margin-bottom: 20px; /* Add consistent spacing below checkbox */
+  /*margin-bottom: 20px; !* Add consistent spacing below checkbox *!*/
 }
 
 .button-group {
