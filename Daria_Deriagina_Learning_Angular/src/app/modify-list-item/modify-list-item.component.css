@@ -56,6 +56,15 @@ button[type="button"]:hover {
   background-color: #5a6268;
 }
 
+.mat-tooltip {
+  background: #333;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+
+
 @media (max-width: 768px) {
   .button-group {
     flex-direction: column;

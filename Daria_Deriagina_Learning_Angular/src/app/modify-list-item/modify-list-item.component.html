@@ -1,36 +1,46 @@
 <form [formGroup]="investmentForm" (ngSubmit)="onSubmit()" class="investment-form">
   <!-- ID Field -->
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="form-field">
     <mat-label>ID</mat-label>
-    <input matInput type="number" formControlName="id" />
+    <input
+      matInput
+      type="number"
+      id="id"
+      formControlName="id"
+      matTooltip="Enter a unique numerical ID for the investment"
+      matTooltipPosition="below"
+    />
   </mat-form-field>
 
+
   <!-- Investment Name Field -->
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="form-field" matTooltip="Provide the name of the investment (e.g., Retirement Fund)">
     <mat-label>Investment Name</mat-label>
-    <input matInput type="text" formControlName="name" />
+    <input matInput type="text" id="investmentName" formControlName="name" />
   </mat-form-field>
 
   <!-- Initial Amount Field -->
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="form-field" matTooltip="Enter the initial investment amount in dollars">
     <mat-label>Initial Amount</mat-label>
-    <input matInput type="number" formControlName="initialAmount" />
+    <input matInput type="number" id="initialAmount" formControlName="initialAmount" />
   </mat-form-field>
 
   <!-- Interest Rate Field -->
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="form-field" matTooltip="Enter the annual interest rate as a percentage">
     <mat-label>Interest Rate (%)</mat-label>
-    <input matInput type="number" formControlName="interestRate" />
+    <input matInput type="number" id="interestRate" formControlName="interestRate" />
   </mat-form-field>
 
   <!-- Duration (Years) Field -->
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="form-field" matTooltip="Specify the duration of the investment in years">
     <mat-label>Duration (Years)</mat-label>
-    <input matInput type="number" formControlName="duration" />
+    <input matInput type="number" id="duration" formControlName="duration" />
   </mat-form-field>
 
   <!-- Compound Frequency Field -->
-  <mat-checkbox formControlName="compoundFrequency">Compound Frequency</mat-checkbox>
+  <mat-checkbox formControlName="compoundFrequency" class="form-checkbox" matTooltip="Enable if compound frequency is applied">
+    Compound Frequency
+  </mat-checkbox>
 
   <!-- Form Buttons -->
   <div class="button-group">

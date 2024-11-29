@@ -10,6 +10,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatButtonModule } from "@angular/material/button";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @Component({
@@ -23,7 +24,8 @@ import { MatButtonModule } from "@angular/material/button";
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule
   ],
   templateUrl: './modify-list-item.component.html',
   styleUrls: ['./modify-list-item.component.scss']

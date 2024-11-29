@@ -5,11 +5,16 @@ import {AsyncPipe, DatePipe, NgForOf, NgIf, UpperCasePipe} from "@angular/common
 import { InvestmentListComponent } from "./investment-list/investment-list.component";
 import { InvestmentService } from "./services/investment.service";
 import { InvestmentListItemComponent } from "./investment-list-item/investment-list-item.component";
+import {MatToolbar} from "@angular/material/toolbar";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgForOf, InvestmentListComponent, InvestmentListItemComponent, AsyncPipe, RouterLink, UpperCasePipe,DatePipe],
+  imports: [RouterOutlet, NgIf, NgForOf, InvestmentListComponent, InvestmentListItemComponent, AsyncPipe, RouterLink, UpperCasePipe, DatePipe, MatToolbar,
+  MatButtonModule, MatToolbarModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
