@@ -1,17 +1,17 @@
 <html>
 <body>
-<nav>
+<nav class="centered-nav">
   <ul>
     <li><a routerLink="/investments">Home</a></li>
     <li><a routerLink="/modify-investment">Modify Investment</a></li>
   </ul>
 </nav>
 
-<div>
-  <h1>{{myDate | date: 'short'}}</h1>
+<div class="centered-content">
+  <h1>{{ myDate | date: 'short' }}</h1>
   <h1>{{ title | uppercase }}</h1>
-
-  <router-outlet></router-outlet>
 </div>
+
+<router-outlet></router-outlet>
 </body>
 </html>

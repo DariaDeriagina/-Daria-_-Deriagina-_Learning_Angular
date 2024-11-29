@@ -1,19 +1,25 @@
-<div class="investment-item"
-     [appHoverHighlight]="'lightblue'"
-     [appShowDetailsOnHover]="'ID: ' + investmentInput.id">
-  <img [ngSrc]="investmentInput?.imageUrl || ''"
-       alt="{{ investmentInput?.name || 'Investment image' }}"
-       width="200"
-       height="150"
-       priority />
-  <div class="investment-id">ID: {{ investmentInput.id }}</div>
-  <div class="investment-details">
-    <p>Investment: {{ { name: investmentInput.name, duration: investmentInput.duration } | investmentDetails }}</p>
-    <p>Initial Amount: {{ investmentInput.initialAmount | currency: 'CAN' }}</p>
-    <p [style.color]="investmentInput.interestRate | interestRateColor">
-      Interest Rate: {{ investmentInput.interestRate }}%
-    </p>
-
-    <p>Compound Frequency: {{ investmentInput.compoundFrequency ? 'Yes' : 'No' }}</p>
-  </div>
-</div>
+<mat-card class="investment-item" [appHoverHighlight]="'lightblue'">
+<!--  <mat-card-header>-->
+<!--    <mat-card-title>{{ investmentInput?.name }}</mat-card-title>-->
+<!--    <mat-card-subtitle>ID: {{ investmentInput?.id }}</mat-card-subtitle>-->
+<!--  </mat-card-header>-->
+  <mat-card-content>
+    <div class="investment-image-container">
+      <img mat-card-image
+           [src]="investmentInput?.imageUrl || 'fallback-image.jpg'"
+           alt="{{ investmentInput?.name || 'Investment image' }}" />
+    </div>
+    <div class="investment-details">
+      <p>Investment: {{ { name: investmentInput.name, duration: investmentInput.duration } | investmentDetails }}</p>
+      <p>Initial Amount: {{ investmentInput.initialAmount | currency: 'CAN' }}</p>
+      <p [style.color]="investmentInput.interestRate | interestRateColor">
+        Interest Rate: {{ investmentInput.interestRate }}%
+      </p>
+      <p>Compound Frequency: {{ investmentInput.compoundFrequency ? 'Yes' : 'No' }}</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="button-group">
+    <button mat-raised-button color="primary" (click)="editInvestment(investmentInput.id)">Edit</button>
+    <button mat-raised-button color="warn" (click)="deleteInvestment(investmentInput.id)">Delete</button>
+  </mat-card-actions>
+</mat-card>
