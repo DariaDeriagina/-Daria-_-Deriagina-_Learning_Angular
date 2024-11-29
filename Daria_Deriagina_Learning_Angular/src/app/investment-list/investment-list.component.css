@@ -45,3 +45,21 @@
   padding: 10px 20px;
   font-size: 1rem;
 }
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  color: #3f51b5;
+  font-weight: bold;
+}
+
+td.mat-cell {
+  padding: 16px;
+  font-size: 1rem;
+}
+
+.mat-sort-header-arrow {
+  color: #3f51b5;
+}
