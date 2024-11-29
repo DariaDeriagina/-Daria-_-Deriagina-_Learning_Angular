@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Hello, {{ title }}</h1>
-    <p>Congratulations! Your app is running. 🎉</p>
-    <p>Your age are {{ age }} years old</p>
-    <p>City: {{ city }}.</p>
-  </body>
+<html>
+<body>
+<nav>
+  <ul>
+    <li><a routerLink="/investments">Home</a></li>
+    <li><a routerLink="/modify-investment">Modify Investment</a></li>
+  </ul>
+</nav>
+
+<div>
+  <h1>{{myDate | date: 'short'}}</h1>
+  <h1>{{ title | uppercase }}</h1>
+
+  <router-outlet></router-outlet>
+</div>
+</body>
 </html>
